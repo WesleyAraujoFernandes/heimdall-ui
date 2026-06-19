@@ -1,0 +1,50 @@
+<div class="min-h-screen bg-black p-8">
+  <div class="mx-auto max-w-4xl">
+    <h1 class="mb-6 text-3xl font-bold text-yellow-400">
+      Configurações
+    </h1>
+    <form [formGroup]="form" (ngSubmit)="save()" class="space-y-4">
+      <div>
+        <label for="databaseServerUrl" class="mb-1 block text-sm font-medium text-yellow-300">Servidor</label>
+        <input name="databaseServerUrl" formControlName="databaseServerUrl" placeholder="Servidor"
+          class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+      </div>
+      <div>
+        <label for="databaseServerPort" class="mb-1 block text-sm font-medium text-yellow-300">Porta</label>
+        <input name="databaseServerPort" formControlName="databaseServerPort" placeholder="Porta"
+          class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+      </div>
+      <div>
+        <label for="databaseIdColumn" class="mb-1 block text-sm font-medium text-yellow-300">Coluna ID</label>
+        <input name="databaseIdColumn" formControlName="databaseIdColumn" placeholder="Coluna ID"
+          class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+      </div>
+      <div>
+        <label for="databaseName" class="mb-1 block text-sm font-medium text-yellow-300">Nome do banco de dados</label>
+        <input name="databaseName" formControlName="databaseName" placeholder="Nome do banco de dados"
+          class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+      </div>
+      <div>
+        <label for="databaseName" class="mb-1 block text-sm font-medium text-yellow-300">Nome da tabela</label>
+        <input name="databaseTableName" formControlName="databaseTableName" placeholder="Nome da tabela"
+          class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+      </div>
+      <div>
+        <label for="databaseUsername" class="mb-1 block text-sm font-medium text-yellow-300">Usuário</label>
+        <input name="databaseUsername" formControlName="databaseUsername" placeholder="Usuário"
+          class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+      </div>
+      <div>
+        <label for="databasePassowrd" class="mb-1 block text-sm font-medium text-yellow-300">Senha</label>
+        <input type="password" formControlName="databasePassword" placeholder="Senha"
+          class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+      </div>
+      <textarea rows="6" formControlName="databaseQuery" placeholder="SQL"
+        class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+      </textarea>
+      <button type="submit" class="rounded bg-yellow-400 px-4 py-2 font-bold text-black">
+        Salvar
+      </button>
+    </form>
+  </div>
+</div>

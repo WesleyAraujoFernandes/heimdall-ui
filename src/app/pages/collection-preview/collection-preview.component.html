@@ -1,0 +1,15 @@
+<div class="min-h-screen bg-black p-8">
+  <div class="mx-auto max-w-7xl">
+    <h1 class="mb-6 text-3xl font-bold text-yellow-600">
+      Preview da Coleção
+    </h1>
+    @if (tableData) {
+    <app-data-table [data]="tableData">
+    </app-data-table>
+    } @else {
+    <div class="text-yellow-300">
+      Carregando preview...
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="overflow-x-auto rounded-lg border-2 border-yellow-300 shadow-lg">
+  <table class="min-w-full border-collapse border border-yellow-300 bg-gray-950 text-gray-100">
+
+    <thead>
+      <tr class="bg-yellow-300 text-black uppercase text-sm tracking-wider">
+
+        @for (column of data.columns; track column.field) {
+        <th class="border border-yellow-400 px-4 py-2 text-left font-semibold">
+          {{ column.label }}
+        </th>
+        }
+
+      </tr>
+    </thead>
+
+    <tbody>
+
+      @for (row of data.rows; track $index) {
+
+      <tr class="hover:bg-gray-800">
+
+        @for (column of data.columns; track column.field) {
+
+        <td class="border border-yellow-300 px-4 py-2 text-sm">
+          {{ row[column.field] }}
+        </td>
+
+        }
+
+      </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+</div>
