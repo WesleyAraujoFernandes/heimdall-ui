@@ -11,6 +11,9 @@ export class SettingsService {
   constructor() { }
 
   save(settings: DatabaseSettings): void {
+    console.log("--------------------------------------")
+    console.log("settings:", settings);
+    console.log("--------------------------------------")
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(settings))
   }
 

@@ -11,11 +11,19 @@ export class SettingsComponent {
   private fb = inject(FormBuilder)
   private settingsService = inject(SettingsService)
 
+  dbmsOptions = [
+    { value: 'POSTGRESQL', label: 'PostgreSQL' },
+    { value: 'MYSQL', label: 'MySQL' },
+    { value: 'SQLSERVER', label: 'Microsoft SQL Server' },
+    { value: 'ORACLE', label: 'Oracle' },
+    { value: 'MONGODB', label: 'MongoDB' },
+  ]
+
   form = this.fb.group({
-    collectionType: ['DATABASE'],
-    dbms: ['POSTGRESQL'],
-    databaseServerUrl: ['localhost', Validators.required],
-    databaseServerPort: ['5432', Validators.required],
+    collectionType: ['DATABASE', Validators.required],
+    dbms: ['', Validators.required],
+    databaseServerUrl: ['', Validators.required],
+    databaseServerPort: ['', Validators.required],
     databaseName: ['', Validators.required],
     databaseUsername: ['', Validators.required],
     databasePassword: ['', Validators.required],

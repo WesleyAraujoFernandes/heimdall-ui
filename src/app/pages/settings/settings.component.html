@@ -5,6 +5,19 @@
     </h1>
     <form [formGroup]="form" (ngSubmit)="save()" class="space-y-4">
       <div>
+        <label for="dbms" class="mb-1 block text-sm font-medium text-yellow-300">
+          Banco de Dados
+        </label>
+        <select formControlName="dbms" name="dbms" id="dbms"
+          class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+          @for (option of dbmsOptions; track option.value) {
+          <option [value]="option.value">
+            {{ option.label }}
+          </option>
+          }
+        </select>
+      </div>
+      <div>
         <label for="databaseServerUrl" class="mb-1 block text-sm font-medium text-yellow-300">Servidor</label>
         <input name="databaseServerUrl" formControlName="databaseServerUrl" placeholder="Servidor"
           class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
