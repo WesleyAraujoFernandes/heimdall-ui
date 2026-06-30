@@ -4,78 +4,118 @@
       Configurações
     </h1>
     <form [formGroup]="form" (ngSubmit)="save()" class="space-y-4">
-      <div>
-        <label for="dataSource" class="text-yellow-400">Datasource</label>
-        <div class="grid grid-cols-4 gap-4">
-          <select name="dataSource" id="dataSource" formControlName="dataSource"
-            class="rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+      <div class="grid grid-cols-3 gap-2">
+        <div>
+          <label for="dataSource" class="mb-1 block text-yellow-400">
+            Fonte de Dados
+          </label>
+          <select id="dataSource" formControlName="dataSource"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
             @for (option of collectionTypeOptions; track option.value) {
-            <option [value]="option.value">
-              {{ option.label }}
-            </option>
+            <option [value]="option.value">{{ option.label }}</option>
             }
           </select>
         </div>
-        <!--
-        <div visible="false">
-          <label for="dbms" class="mb-1 block text-sm font-medium text-yellow-300">
-            Banco de Dados
-          </label>
+      </div>
+      @if(isDatabase) {
+      <div class="grid grid-cols-12 gap-2">
+        <div class="col-span-4">
           <div>
-            <select formControlName="dbms" name="dbms" id="dbms"
+            <label for="dbms" class="mb-1 block text-yellow-400">
+              DBMS
+            </label>
+            <select id="dbms" formControlName="dbms"
               class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
               @for (option of dbmsOptions; track option.value) {
-              <option [value]="option.value">
-                {{ option.label }}
-              </option>
+              <option [value]="option.value">{{ option.label }}</option>
               }
             </select>
           </div>
-          <div>
-            <label for="databaseServerUrl" class="mb-1 block text-sm font-medium text-yellow-300">Servidor</label>
-            <input name="databaseServerUrl" formControlName="databaseServerUrl" placeholder="Servidor"
-              class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
-          </div>
-          <div>
-            <label for="databaseServerPort" class="mb-1 block text-sm font-medium text-yellow-300">Porta</label>
-            <input name="databaseServerPort" formControlName="databaseServerPort" placeholder="Porta"
-              class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
-          </div>
-          <div>
-            <label for="databaseIdColumn" class="mb-1 block text-sm font-medium text-yellow-300">Coluna ID</label>
-            <input name="databaseIdColumn" formControlName="databaseIdColumn" placeholder="Coluna ID"
-              class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
-          </div>
-          <div>
-            <label for="databaseName" class="mb-1 block text-sm font-medium text-yellow-300">Nome do banco de
-              dados</label>
-            <input name="databaseName" formControlName="databaseName" placeholder="Nome do banco de dados"
-              class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
-          </div>
-          <div>
-            <label for="databaseName" class="mb-1 block text-sm font-medium text-yellow-300">Nome da tabela</label>
-            <input name="databaseTableName" formControlName="databaseTableName" placeholder="Nome da tabela"
-              class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
-          </div>
-          <div>
-            <label for="databaseUsername" class="mb-1 block text-sm font-medium text-yellow-300">Usuário</label>
-            <input name="databaseUsername" formControlName="databaseUsername" placeholder="Usuário"
-              class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
-          </div>
-          <div>
-            <label for="databasePassowrd" class="mb-1 block text-sm font-medium text-yellow-300">Senha</label>
-            <input type="password" formControlName="databasePassword" placeholder="Senha"
-              class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
-          </div>
-
-          <textarea rows="6" formControlName="databaseQuery" placeholder="SQL"
-            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
-      </textarea>
         </div>
-        -->
+        <div class="col-span-3">
+          <div>
+            <label class="mb-1 block text-yellow-400">Servidor</label>
+            <input type="text" formControlName="databaseServerUrl"
+              class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+          </div>
+        </div>
+        <div>
+          <label class="mb-1 block text-yellow-400">Porta</label>
+          <input type="number" formControlName="databaseServerPort"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+        </div>
+        <div class="col-span-4">
+          <label class="mb-1 block text-yellow-400">Nome do Banco de Dados</label>
+          <input type="text" formControlName="databaseName" name="databaseName" id="databaseName"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+        </div>
       </div>
-      <button type="submit" class="rounded bg-yellow-400 px-4 py-2 font-bold text-black">
+      <div class="grid grid-cols-12 gap-2">
+        <div class="col-span-3">
+          <label for="databaseUsername" class="mb-1 block text-yellow-400">Nome de Usuário</label>
+          <input type="text" id="databaseUsername" name="databaseUsername" formControlName="databaseUsername"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+        </div>
+        <div class="col-span-3">
+          <label for="databasePassword" class="mb-1 block text-yellow-400">Senha do Usuário</label>
+          <input type="password" name="databasePassword" id="databasePassword" formControlName="databasePassword"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+        </div>
+        <div class="col-span-3">
+          <label for="databaseTableName" class="mb-1 block text-yellow-400">Nome da Tabela</label>
+          <input type="text" name="databaseTableName" id="databaseTableName" formControlName="databaseTableName"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+        </div>
+        <div class="col-span-3">
+          <label for="databaseIdColumn" class="mb-1 block text-yellow-400">Nome da coluna ID</label>
+          <input type="text" name="databaseIdColumn" id="databaseIdColumn" formControlName="databaseIdColumn"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+        </div>
+      </div>
+      <!--
+      <div class="grid grid-cols-6 gap-2">
+        <div class="col-span-1">
+          <label for="databaseUsername" class="mb-1 block text-yellow-400">
+            Usuário
+          </label>
+          <input type="text" formControlName="databaseUsername" name="databaseUsername" id="databaseUsername"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+        </div>
+        <div class="col-span-1">
+          <label for="databasePassword" class="mb-1 block text-yellow-400">
+            Senha
+          </label>
+          <input type="password" formControlName="databasePassword" name="databaseUsername" id="databasePassword"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+        </div>
+        <div class="col-span-2">
+          <label for="databaseName" class="mb-1 block text-yellow-400">Nome da Database</label>
+          <input type="text" formControlName="databaseName" name="databaseName" id="databaseName"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+        </div>
+        <div class="col-span-2">
+          <label for="databaseIdColumn" class="mb-1 block text-yellow-400">Coluna ID</label>
+          <input type="text" formControlName="databaseIdColumn" name="databaseIdColumn" id="databaseIdColumn"
+            class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-2">
+        <div>
+          <label for="databaseUsername" class="mb-1 block text-yellow-400">
+            Database Query
+          </label>
+          <textarea class="border-2 border-yellow-400 bg-neutral-800 text-white focus:border-white outline-none"
+            name="databaseQuery" id="databaseQuery" rows="5" cols="120" placeholder="Digite a query aqui"></textarea>
+        </div>
+      </div>
+      -->
+      } @else if(isFilesystem) {
+      <span>Filesystem</span>
+      }
+      <button type="submit"
+        class="rounded bg-yellow-400 px-4 py-2 font-bold text-black transition-colors duration-200 hover:bg-yellow-500">
         Salvar
       </button>
     </form>
   </div>
+</div>

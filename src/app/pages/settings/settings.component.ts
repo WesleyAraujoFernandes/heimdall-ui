@@ -45,4 +45,12 @@ export class SettingsComponent {
     )
     alert('Configurações salvas')
   }
+
+  get isDatabase(): boolean {
+    return this.form.get('dataSource')?.value === 'DATABASE';
+  }
+
+  get isFilesystem(): boolean {
+    return this.form.get('dataSource')?.value === 'FILESYSTEM'
+  }
 }
