@@ -4,7 +4,7 @@
       Configurações
     </h1>
     <form [formGroup]="form" (ngSubmit)="save()" class="space-y-4">
-      <div class="grid grid-cols-3 gap-2">
+      <div class="grid grid-cols-2 gap-2">
         <div>
           <label for="dataSource" class="mb-1 block text-yellow-400">
             Fonte de Dados
@@ -19,7 +19,7 @@
       </div>
       @if(isDatabase) {
       <div class="grid grid-cols-12 gap-2">
-        <div class="col-span-4">
+        <div class="col-span-6">
           <div>
             <label for="dbms" class="mb-1 block text-yellow-400">
               DBMS
@@ -110,12 +110,21 @@
       </div>
       -->
       } @else if(isFilesystem) {
-      <span>Filesystem</span>
+      <div class="grid grid-cols-12">
+        <div class="col-span-6">
+          <div>
+            <label for="filesystemPath" class="mb-1 block text-yellow-400">Caminho do Path</label>
+            <input formControlName="filesystemPath" name="filesystemPath" id="filesystemPath"
+            type="text" class="w-full rounded border border-yellow-300 bg-gray-900 p-2 text-white">
+          </div>
+        </div>
+      </div>
       }
       <button type="submit"
         class="rounded bg-yellow-400 px-4 py-2 font-bold text-black transition-colors duration-200 hover:bg-yellow-500">
         Salvar
       </button>
+      <app-collection-preview></app-collection-preview>
     </form>
   </div>
 </div>
